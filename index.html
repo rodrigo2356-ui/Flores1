@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mi niña hermosa 🌻</title>
+    <title>Para vos niña 🌻</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap');
 
@@ -20,18 +20,21 @@
             height: 100vh;
         }
 
-        /* Tarjeta con efecto Glassmorphism */
+        /* Tarjeta con efecto Glassmorphism y estilo dibujo */
         .mensaje-container {
             text-align: center;
             z-index: 10;
             background: rgba(255, 255, 255, 0.7);
-            padding: 30px;
-            border-radius: 25px;
+            padding: 40px;
+            border-radius: 30px;
             box-shadow: 0 10px 40px rgba(255, 200, 0, 0.15);
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 215, 0, 0.5);
-            max-width: 85%;
-            animation: aparecer 2s ease-out;
+            border: 4px solid rgba(255, 215, 0, 0.6);
+            max-width: 90%;
+            animation: aparecer 2.5s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         @keyframes aparecer {
@@ -42,14 +45,36 @@
         h1 {
             font-family: 'Dancing Script', cursive;
             color: #b8860b;
-            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-size: clamp(3rem, 10vw, 5rem);
             margin: 0;
+            text-shadow: 2px 2px 5px rgba(255, 215, 0, 0.3);
         }
 
         p {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: #5d5033;
-            margin-top: 15px;
+            margin: 15px 0;
+            max-width: 80%;
+        }
+
+        /* Contenedor para tu ramo de flores ilustrado */
+        .ramo-container {
+            margin: 20px auto;
+            max-width: 250px;
+            border: 4px solid #FFD700;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ramo-container img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
         }
 
         .musica-container {
@@ -57,20 +82,21 @@
             padding: 15px;
             background: rgba(255, 255, 255, 0.4);
             border-radius: 50px;
+            border: 2px dashed rgba(255, 215, 0, 0.6);
         }
 
         audio {
-            height: 40px;
-            filter: sepia(20%) saturate(150%) hue-rotate(10deg);
+            height: 35px;
+            filter: sepia(30%) saturate(140%) hue-rotate(10deg);
         }
 
-        /* Estilo de las flores animadas */
+        /* Flores cayendo animadas (más grandes y estilizadas) */
         .flor {
             position: absolute;
             top: -100px;
             animation: caer linear infinite;
             z-index: 1;
-            filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.05));
+            filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.05));
         }
 
         @keyframes caer {
@@ -86,36 +112,38 @@
     <div id="jardin"></div>
 
     <div class="mensaje-container">
-        <h1>Para mi niña hermosa</h1>
-        <p>Porque te mereces todas las flores amarillas del mundo 🌻</p>
+        <h1>para vos niña</h1>
         
+        <p>Porque te mereces todas las flores del mundo 🌻</p>
+        
+        <div class="ramo-container">
+            <img src="amarillo.jpg" alt="Ramo de flores ilustrado">
+        </div>
+
         <div class="musica-container">
             <audio id="musica" controls loop>
                 <source src="nuestra-cancion.mp3" type="audio/mpeg">
                 Tu navegador no soporta el audio.
             </audio>
-            <p style="font-size: 0.9rem; color: #9a8a66; margin-top: 8px;">Presiona Play para escuchar nuestra canción ✨</p>
+            <p style="font-size: 0.9rem; color: #9a8a66; margin-top: 5px;">Presiona Play para escuchar ✨</p>
         </div>
     </div>
 
     <script>
-        // Dibujo digital de la flor (SVG)
+        // Dibujo digital de la flor cayendo (SVG), más detallado
         const svgFlor = `
-        <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <svg width="70" height="70" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <path d="M50 10 C60 10, 70 30, 50 45 C30 30, 40 10, 50 10 Z" fill="#FFD700" stroke="#DAA520" stroke-width="1.5"/>
             <path d="M50 90 C60 90, 70 70, 50 55 C30 70, 40 90, 50 90 Z" fill="#FFD700" stroke="#DAA520" stroke-width="1.5"/>
             <path d="M10 50 C10 40, 30 30, 45 50 C30 70, 10 60, 10 50 Z" fill="#FFD700" stroke="#DAA520" stroke-width="1.5"/>
             <path d="M90 50 C90 40, 70 30, 55 50 C70 70, 90 60, 90 50 Z" fill="#FFD700" stroke="#DAA520" stroke-width="1.5"/>
-            <path d="M20 20 C30 15, 45 35, 50 50 C35 45, 15 30, 20 20 Z" fill="#FFC000" stroke="#DAA520" stroke-width="1.5"/>
-            <path d="M80 80 C70 85, 55 65, 50 50 C65 55, 85 70, 80 80 Z" fill="#FFC000" stroke="#DAA520" stroke-width="1.5"/>
-            <path d="M80 20 C70 15, 55 35, 50 50 C65 45, 85 30, 80 20 Z" fill="#FFC000" stroke="#DAA520" stroke-width="1.5"/>
-            <path d="M20 80 C30 85, 45 65, 50 50 C35 55, 15 70, 20 80 Z" fill="#FFC000" stroke="#DAA520" stroke-width="1.5"/>
-            <circle cx="50" cy="50" r="12" fill="#5C4033" />
+            <circle cx="50" cy="50" r="14" fill="#5C4033" stroke="#8B4513" stroke-width="1.5" />
             <circle cx="50" cy="50" r="8" fill="#8B4513" />
         </svg>`;
 
         const jardin = document.getElementById('jardin');
-        const numFlores = 25;
+        // Un poco menos de flores cayendo para no sobrecargar el diseño
+        const numFlores = 18;
 
         for (let i = 0; i < numFlores; i++) {
             let flor = document.createElement('div');
@@ -123,9 +151,10 @@
             flor.innerHTML = svgFlor;
             
             let posLeft = Math.random() * 100;
-            let duracion = Math.random() * 5 + 7; 
+            let duracion = Math.random() * 6 + 8; 
             let retraso = Math.random() * 10;
-            let escala = Math.random() * 0.5 + 0.5;
+            // Flores un poco más grandes y variadas
+            let escala = Math.random() * 0.7 + 0.7;
 
             flor.style.left = posLeft + 'vw';
             flor.style.animationDuration = duracion + 's';
