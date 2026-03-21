@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi niña hermosa 🌻</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff9e6; 
+            overflow: hidden;
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Tarjeta con efecto Glassmorphism */
+        .mensaje-container {
+            text-align: center;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(255, 200, 0, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            max-width: 85%;
+            animation: aparecer 2s ease-out;
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #b8860b;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin: 0;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #5d5033;
+            margin-top: 15px;
+        }
+
+        .musica-container {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50px;
+        }
+
+        audio {
+            height: 40px;
+            filter: sepia(20%) saturate(150%) hue-rotate(10deg);
+        }
+
+        /* Estilo de las flores animadas */
+        .flor {
+            position: absolute;
+            top: -100px;
+            animation: caer linear infinite;
+            z-index: 1;
+            filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.05));
+        }
+
+        @keyframes caer {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="jardin"></div>
+
+    <div class="mensaje-container">
+        <h1>Para mi niña hermosa</h1>
+        <p>Porque te mereces todas las flores amarillas del mundo 🌻</p>
+        
+        <div class="musica-container">
+            <audio id="musica" controls loop>
+                <source src="nuestra-cancion.mp3" type="audio/mpeg">
+                Tu navegador no soporta el audio.
+            </audio>
+            <p style="font-size: 0.9rem; color: #9a8a66; margin-top: 8px;">Presiona Play para escuchar nuestra canción ✨</p>
+        </div>
+    </div>
+
+    <script>
+        // Dibujo digital de la flor (SVG)
+        const svgFlor = `
+        <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 10 C60 10, 70 30, 50 45 C30 30, 40 10, 50 10 Z" fill="#FFD700" stroke="#DAA520" stroke-width="1.5"/>
+            <path d="M50 90 C60 90, 70 70, 50 55 C30 70, 40 90, 50 90 Z" fill="#FFD700" stroke="#DAA520" stroke-width="1.5"/>
+            <path d="M10 50 C10 40, 30 30, 45 50 C30 70, 10 60, 10 50 Z" fill="#FFD700" stroke="#DAA520" stroke-width="1.5"/>
+            <path d="M90 50 C90 40, 70 30, 55 50 C70 70, 90 60, 90 50 Z" fill="#FFD700" stroke="#DAA520" stroke-width="1.5"/>
+            <path d="M20 20 C30 15, 45 35, 50 50 C35 45, 15 30, 20 20 Z" fill="#FFC000" stroke="#DAA520" stroke-width="1.5"/>
+            <path d="M80 80 C70 85, 55 65, 50 50 C65 55, 85 70, 80 80 Z" fill="#FFC000" stroke="#DAA520" stroke-width="1.5"/>
+            <path d="M80 20 C70 15, 55 35, 50 50 C65 45, 85 30, 80 20 Z" fill="#FFC000" stroke="#DAA520" stroke-width="1.5"/>
+            <path d="M20 80 C30 85, 45 65, 50 50 C35 55, 15 70, 20 80 Z" fill="#FFC000" stroke="#DAA520" stroke-width="1.5"/>
+            <circle cx="50" cy="50" r="12" fill="#5C4033" />
+            <circle cx="50" cy="50" r="8" fill="#8B4513" />
+        </svg>`;
+
+        const jardin = document.getElementById('jardin');
+        const numFlores = 25;
+
+        for (let i = 0; i < numFlores; i++) {
+            let flor = document.createElement('div');
+            flor.className = 'flor';
+            flor.innerHTML = svgFlor;
+            
+            let posLeft = Math.random() * 100;
+            let duracion = Math.random() * 5 + 7; 
+            let retraso = Math.random() * 10;
+            let escala = Math.random() * 0.5 + 0.5;
+
+            flor.style.left = posLeft + 'vw';
+            flor.style.animationDuration = duracion + 's';
+            flor.style.animationDelay = retraso + 's';
+            flor.style.transform = `scale(${escala})`;
+
+            jardin.appendChild(flor);
+        }
+    </script>
+</body>
+</html>
